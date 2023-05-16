@@ -1,29 +1,24 @@
 import './App.css'
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Header from './components/Header';
 
-import Home from "./pages/Home";
-//import Login from "./pages/Login";
-//<Route path="/login" element={<Login setUser={setUser} />} />
 
 function App() {
-  //const [token, setToken] = useState(Cookies.get("token") || null);
   const [isLoading, setIsLoading] = useState(false);
-
 
   return (
     <Router>
-      <Header
-        setUser={setUser}
-        token={token}
-      />
+      <Header  isLoading={isLoading} />
       <Routes>
         <Route path="/" element={<Home isLoading={isLoading} />} />
-        
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   )
 }
 
-export default App
+export default App;
